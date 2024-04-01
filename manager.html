@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manager Dashboard</title>
+    <style>
+        /* CSS styles for the container */
+        .container {
+            text-align: center;
+            margin-top: 50px; /* Adjust margin as needed */
+        }
+
+        /* CSS styles for the button */
+        #getDataButton {
+            background-color: lightblue;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        /* CSS styles for timesheet entries */
+        .timesheetEntry {
+            border: 1px solid #ccc;
+            margin-top: 10px;
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Manager Dashboard</h1>
+        <div id="timesheetList"></div>
+        <button onclick="fetchTimesheets()" id="getDataButton">Get Data</button>
+    </div>
+
+    <script>
+        async function fetchTimesheets() {
+            try {
+                console.log("KKK");
+                const response = await fetch('http://localhost:7000/managers/:managerId/timesheets');
+                console.log(data); // Logging the received data
+                const data = await response.json();
+                displayTimesheets(data.timesheets);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        function displayTimesheets(timesheets) {
+            const timesheetList = document.getElementById('timesheetList');
+            timesheetList.innerHTML = '';
+            timesheets.forEach(timesheet => {
+                const div = document.createElement('div');
+                div.innerHTML = `<p>Date: ${timesheet.date}, Hours: ${timesheet.hours}, Rating: ${timesheet.rating}</p>`;
+                timesheetList.appendChild(div);
+            });
+        }
+    </script>
+</body>
+</html>
