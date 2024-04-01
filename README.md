@@ -4,4 +4,4 @@ Timesheet application for employees, each employee should have a reporting manag
 has been rated for a particular day, he would not be able to make any changes to the timesheet.
 
 
-View master branch to view the code 
+ NOTE-  View master branch to view  all the code 
