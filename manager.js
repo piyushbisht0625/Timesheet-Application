@@ -4,7 +4,7 @@ async function fetchTimesheets() {
       const response = await fetch('http://localhost:7000/managers/:managerId/timesheets');
       console.log(data)
       const data = await response.json();
-      displayTimesheets(data.timesheets);
+      displayTimesheets(data.timesheets); 
     } catch (error) {
       console.error('Error:', error);
     }
